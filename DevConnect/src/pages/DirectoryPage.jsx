@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // ← import Link here
 import SearchBar from "../components/SearchBar.jsx";
 import UserCard from "../components/UserCard.jsx";
 import RepoList from "../components/RepoList.jsx";
@@ -12,7 +13,7 @@ function DirectoryPage() {
   const { data: user, isLoading: isUserLoading, isError: isUserError, refetch: refetchUser } = useQuery({
     queryKey: ["githubUser", username],
     queryFn: async () => (await axios.get(`https://api.github.com/users/${username}`)).data,
-    enabled: !!username, // only fetch if username exists
+    enabled: !!username,
     retry: false,
   });
 
@@ -23,7 +24,7 @@ function DirectoryPage() {
       const res = await axios.get(`https://api.github.com/users/${username}/repos?per_page=5&sort=updated`);
       return res.data;
     },
-    enabled: !!user, // only fetch repos if user exists
+    enabled: !!user,
   });
 
   const handleSearch = (name) => {
@@ -35,6 +36,18 @@ function DirectoryPage() {
 
   return (
     <div className="max-w-4xl mx-auto mt-10">
+      
+      {/* ← Bookmarks button at the top */}
+      <div className="flex justify-end mb-4">
+        <Link
+          to="/bookmarks"
+          className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+        >
+          My Bookmarks
+        </Link>
+      </div>
+
+      {/* Search bar */}
       <SearchBar onSearch={handleSearch} />
 
       {/* User status */}
@@ -44,7 +57,7 @@ function DirectoryPage() {
       {/* User info */}
       {user && <UserCard user={user} />}
 
-      {/* Repos status */}
+      {/* Repo status */}
       {isReposLoading && <p className="text-center mt-4">Loading repositories...</p>}
       {isReposError && <p className="text-center mt-4 text-red-500">Failed to load repositories</p>}
 
