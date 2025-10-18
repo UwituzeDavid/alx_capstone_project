@@ -5,7 +5,7 @@ function RepoList({ repos }) {
     return <p className="text-center mt-4 text-gray-500">No repositories found.</p>;
 
   return (
-    <div className="max-w-3xl mx-auto mt-6 grid gap-4">
+    <div className="max-w-4xl mx-auto mt-6 grid gap-4">
       {repos.map((repo) => (
         <div
           key={repo.id}

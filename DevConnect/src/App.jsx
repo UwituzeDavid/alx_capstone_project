@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import DirectoryPage from "./pages/DirectoryPage.jsx";
-import Profile from "./pages/Profile.jsx";
+import Profile from "./components/Profile.jsx";
 
 function App() {
   return (
