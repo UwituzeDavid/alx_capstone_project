@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
-import DirectoryPage from "./pages/DirectoryPage.jsx";
+import DirectoryPage from "./pages/DirectoryPage";
 import Profile from "./components/Profile.jsx";
-import BookmarksPanel from "./pages/BookmarksPanel.jsx";
+import BookmarksPanel from "./pages/BookmarksPanel";
 
 function App() {
   return (

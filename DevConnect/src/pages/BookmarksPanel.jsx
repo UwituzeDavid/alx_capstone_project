@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import UserCard from "./UserCard.jsx";
+import UserCard from "../components/UserCard";
 
 function BookmarksPanel() {
   const [bookmarks, setBookmarks] = useState([]);
