@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 
-function SearchBar({ value, setValue }) {
+function SearchBar({ onSearch }) {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (inputValue.trim() === "") return;
+    onSearch(inputValue.trim()); // call parent function
+  };
+
   return (
-    <div className="flex justify-center mt-6">
+    <form
+      onSubmit={handleSubmit}
+      className="flex justify-center mt-6 gap-2"
+    >
       <input
         type="text"
         placeholder="Search GitHub username"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
         className="border p-2 rounded-l-md w-64 focus:outline-none"
       />
-    </div>
+      <button
+        type="submit"
+        className="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700"
+      >
+        Search
+      </button>
+    </form>
   );
 }
 
