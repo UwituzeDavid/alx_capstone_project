@@ -1,33 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 
-function SearchBar() {
-  const [username, setUsername] = useState("");
-  const navigate = useNavigate();
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (username.trim()) {
-      navigate(`/profile/${username}`);
-    }
-  };
-
+function SearchBar({ value, setValue }) {
   return (
-    <form onSubmit={handleSearch} className="flex justify-center mt-10">
+    <div className="flex justify-center mt-6">
       <input
         type="text"
         placeholder="Search GitHub username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
         className="border p-2 rounded-l-md w-64 focus:outline-none"
       />
-      <button
-        type="submit"
-        className="bg-blue-500 text-white px-4 rounded-r-md hover:bg-blue-600"
-      >
-        Search
-      </button>
-    </form>
+    </div>
   );
 }
 

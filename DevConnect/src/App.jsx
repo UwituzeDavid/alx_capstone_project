@@ -1,23 +1,19 @@
-import Directory from "./pages/Directory"
-import Home from "./pages/Home"
-import Profile from "./components/Profile"
-import { BrowserRouter, Route,Routes } from "react-router-dom"
-
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import DirectoryPage from "./pages/DirectoryPage.jsx";
+import Profile from "./pages/Profile.jsx";
 
 function App() {
- 
-
   return (
-    <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Directory" element={<Directory />} />
-          <Route path="/Profile/:username" element={ <Profile />} />
-        </Routes>
-        
-    </BrowserRouter>
-      
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/directory" element={<DirectoryPage />} />
+        <Route path="/profile/:username" element={<Profile />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
